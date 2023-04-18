@@ -69,7 +69,7 @@ logic [15:0] mult_res;
 CONTROLLER_MAC control (
 
     .reset(reset_n),
-    .clk(clk),
+    .clk(clock),
     .START(START),
     .End_mul(End_mul),
     .Finish(Finish),
@@ -100,7 +100,7 @@ top_multiplier mult (
     .a_in(op_a_out),
     .b_in(op_b_out),
     .reset(control_reset),
-    .clk(clk),
+    .clk(clock),
     .Begin_mul(Begin_mul),
     .mult_out(mult_res),
     .End_mul(End_mul)
