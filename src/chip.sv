@@ -36,7 +36,7 @@ integer i,j;
         end
         
         if (Finish) begin
-            for (j=0;i<20;j=j+1) begin
+            for (j=0;j<20;j=j+1) begin
                 io_out[9] <=  mac_res[j];
             end
         end
