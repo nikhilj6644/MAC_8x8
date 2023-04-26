@@ -15,13 +15,17 @@ module my_chip (
     logic [19:0] mac_res;
      logic mac_carry_out;
      logic Finish;
+    bit input_done = 1'b0;
+    bit output_done = 1'b0;
 
 assign reset_n = !reset;
 assign START = io_in[11];  
 assign  mac_carry_out =  io_out[11];
 assign Finish = io_out[10];
-    assign io_in[8:0] = 9'd0;
-    assign io_out[8:0] = 9'd0;
+    assign input_done = io_in[8];
+    assign output_done = io_out[8];
+    assign io_in[7:0] = 8'd0;
+    assign io_out[7:0] = 8'd0;
     
 
 integer i,j;
@@ -35,6 +39,14 @@ integer i,j;
             op_b_in[i] <= io_in[9];
         end
         
+        if (i == 8) begin
+            input_done <= 1'b1;
+        end
+        
+        else begin 
+            input_done <= 1'b0;
+        end
+        
         if (Finish) begin
             for (j=0;j<20;j=j+1) begin
                 io_out[9] <=  mac_res[j];
@@ -44,6 +56,15 @@ integer i,j;
             io_out[9] <= 1'b0;
         end
             
+        
+        if (j == 20) begin
+            output_done <= 1'b1;
+        end
+        
+        else begin 
+            output_done <= 1'b0;
+        end
+        
         
     end
     
