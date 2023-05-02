@@ -10,9 +10,9 @@ A multiplier-accumulator (MAC) unit is the hardware component that executes the 
 Mathematical equivalent of this operations can be given by: 
 
 Equation 1
-$$
-S =\sum_{k=0}^n Ak * Bk
-$$
+
+S =$\sum_{k=0}^n Ak * Bk
+
 
 ## 2. Project Description
 
