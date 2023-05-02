@@ -15,6 +15,7 @@ module my_chip (
     logic [19:0] mac_res;
      logic mac_carry_out;
      logic Finish;
+    logic End_mul;
     bit input_done = 1'b0;
     bit output_done = 1'b0;
 
@@ -24,8 +25,10 @@ assign  mac_carry_out =  io_out[11];
 assign Finish = io_out[10];
     assign input_done = io_in[8];
     assign output_done = io_out[8];
+    assign End_mul = io_out[7];
+    
     assign io_in[7:0] = 8'd0;
-    assign io_out[7:0] = 8'd0;
+    assign io_out[6:0] = 8'd0;
     
 
 integer i,j;
@@ -77,7 +80,7 @@ logic control_reset;
 logic Begin_mul;
 logic add;
 logic Load_op;
-logic End_mul;
+
 
 //Operands 
 logic [7:0] op_a_out;
